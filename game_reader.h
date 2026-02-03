@@ -11,7 +11,6 @@
 #define GAME_READER_H
 
 #include "types.h"
-#include "space.h"
 #include "game.h"
 
 /**
@@ -20,28 +19,8 @@
  *
  * @param Game pointer to the game
  * @param char pointer to the filename containing the data
- * @return
+ * @return OK, if everything goes well or ERROR if there was some mistake
  */
 Status game_load_spaces(Game *game, char *filename);
-
-/**
- * @brief adds a space to the game
- * @author Profesores PPROG
- *
- * @param Game pointer to the game
- * @param Space pointer to the space
- * @return
- */
-Status game_add_space(Game *game, Space *space);
-
-/**
- * @brief gets position of a space in game
- * @author Profesores PPROG
- *
- * @param Game pointer to the game
- * @param int positional value
- * #return
- */
-Id game_get_space_id_at(Game *game, int position);
 
 #endif
