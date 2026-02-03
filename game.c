@@ -14,6 +14,33 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+/**
+   Private functions
+ */
+
+/**
+ * @brief adds a space to the game
+ * @author Profesores PPROG
+ *
+ * @param Game pointer to the game
+ * @param Space pointer to the space
+ * @return OK, if everything goes well or ERROR if there was some mistake
+ */
+Status game_add_space(Game *game, Space *space);
+
+/**
+ * @brief gets id of the space in a defined position of the game
+ * @author Profesores PPROG
+ *
+ * @param Game pointer to the game
+ * @param int positional value
+ * #return the space id
+ */
+Id game_get_space_id_at(Game *game, int position);
+
+/**
+   Game interface implementation
+*/
 
 Status game_create(Game *game) {
   int i;
@@ -127,4 +154,23 @@ void game_print(Game *game) {
 
   printf("=> Object location: %d\n", (int)game->object_location);
   printf("=> Player location: %d\n", (int)game->player_location);
+}
+
+Status game_add_space(Game *game, Space *space) {
+  if ((space == NULL) || (game->n_spaces >= MAX_SPACES)) {
+    return ERROR;
+  }
+
+  game->spaces[game->n_spaces] = space;
+  game->n_spaces++;
+
+  return OK;
+}
+
+Id game_get_space_id_at(Game *game, int position) {
+  if (position < 0 || position >= game->n_spaces) {
+    return NO_ID;
+  }
+
+  return space_get_id(game->spaces[position]);
 }
