@@ -15,6 +15,7 @@
 #include <string.h>
 
 Status game_load_spaces(Game *game, char *filename) {
+  //Initlization
   FILE *file = NULL;
   char line[WORD_SIZE] = "";
   char name[WORD_SIZE] = "";
@@ -23,6 +24,7 @@ Status game_load_spaces(Game *game, char *filename) {
   Space *space = NULL;
   Status status = OK;
 
+  //Check params for errors
   if (!filename) {
     return ERROR;
   }
@@ -32,6 +34,7 @@ Status game_load_spaces(Game *game, char *filename) {
     return ERROR;
   }
 
+  //Reads the provided data in <filename>
   while (fgets(line, WORD_SIZE, file)) {
     if (strncmp("#s:", line, 3) == 0) {
       toks = strtok(line + 3, "|");
