@@ -72,3 +72,14 @@ Status game_load_spaces(Game *game, char *filename) {
 
   return status;
 }
+
+Status game_add_space(Game *game, Space *space) {
+  if ((space == NULL) || (game->n_spaces >= MAX_SPACES)) {
+    return ERROR;
+  }
+
+  game->spaces[game->n_spaces] = space;
+  game->n_spaces++;
+
+  return OK;
+}
