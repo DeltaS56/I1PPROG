@@ -11,15 +11,40 @@
 #ifndef TYPES_H
 #define TYPES_H
 
-#define WORD_SIZE 1000
-#define NO_ID -1
 
-typedef long Id;
+#define WORD_SIZE 1000 /*!< Word size for string arrays */
+#define NO_ID -1 /*!< There is no Id */
 
-typedef enum { FALSE, TRUE } Bool;
 
-typedef enum { ERROR, OK } Status;
+/**
+ * @brief Id data type
+ */
+typedef long Id; 
 
-typedef enum { N, S, E, W } Direction;
+/**
+ * @brief Bool data type
+ */
+typedef enum {
+ FALSE, /*!< False value */
+ TRUE  /*!< True value */
+} Bool; 
+
+/**
+ * @brief Status data type
+ */
+typedef enum { 
+ ERROR, /*!< Error value */
+ OK     /*!< Ok value */
+} Status; 
+
+/**
+ * @brief Direction data type
+ */
+typedef enum { 
+ N, /*!< North direction */
+ S, /*!< South directin */
+ E, /*!< East direction */
+ W  /*!< West direction */
+} Direction; 
 
 #endif

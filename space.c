@@ -15,7 +15,7 @@
 #include <string.h>
 
 /**
- * @brief Space
+ * @brief Space data estrcuture
  *
  * This struct stores all the information of a space.
  */
