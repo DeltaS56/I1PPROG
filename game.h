@@ -52,4 +52,14 @@ Status game_set_finished(Game *game, Bool finished);
 
 void game_print(Game *game);
 
+/**
+ * @brief adds a space to the game
+ * @author Profesores PPROG
+ *
+ * @param Game pointer to the game
+ * @param Space pointer to the space
+ * @return OK, if everything goes well or ERROR if there was some mistake
+ */
+Status game_add_space(Game *game, Space *space);
+
 #endif

@@ -152,3 +152,14 @@ Id game_get_space_id_at(Game *game, int position) {
 
   return space_get_id(game->spaces[position]);
 }
+
+Status game_add_space(Game *game, Space *space) {
+  if ((space == NULL) || (game->n_spaces >= MAX_SPACES)) {
+    return ERROR;
+  }
+
+  game->spaces[game->n_spaces] = space;
+  game->n_spaces++;
+
+  return OK;
+}
