@@ -56,6 +56,8 @@ Space* space_create(Id id) {
 }
 
 Status space_destroy(Space* space) {
+  
+  /* Error control */
   if (!space) {
     return ERROR;
   }
@@ -65,6 +67,8 @@ Status space_destroy(Space* space) {
 }
 
 Id space_get_id(Space* space) {
+  
+  /* Error control */
   if (!space) {
     return NO_ID;
   }
@@ -72,6 +76,8 @@ Id space_get_id(Space* space) {
 }
 
 Status space_set_name(Space* space, char* name) {
+  
+  /* Error control */
   if (!space || !name) {
     return ERROR;
   }
@@ -83,6 +89,8 @@ Status space_set_name(Space* space, char* name) {
 }
 
 const char* space_get_name(Space* space) {
+  
+  /* Error control */
   if (!space) {
     return NULL;
   }
@@ -90,6 +98,8 @@ const char* space_get_name(Space* space) {
 }
 
 Status space_set_north(Space* space, Id id) {
+  
+  /* Error control */
   if (!space || id == NO_ID) {
     return ERROR;
   }
@@ -98,6 +108,8 @@ Status space_set_north(Space* space, Id id) {
 }
 
 Id space_get_north(Space* space) {
+  
+  /* Error control */
   if (!space) {
     return NO_ID;
   }
@@ -105,6 +117,8 @@ Id space_get_north(Space* space) {
 }
 
 Status space_set_south(Space* space, Id id) {
+  
+  /* Error control */
   if (!space || id == NO_ID) {
     return ERROR;
   }
@@ -113,6 +127,8 @@ Status space_set_south(Space* space, Id id) {
 }
 
 Id space_get_south(Space* space) {
+  
+  /* Error control */
   if (!space) {
     return NO_ID;
   }
@@ -120,6 +136,8 @@ Id space_get_south(Space* space) {
 }
 
 Status space_set_east(Space* space, Id id) {
+  
+  /* Error control */
   if (!space || id == NO_ID) {
     return ERROR;
   }
@@ -128,6 +146,8 @@ Status space_set_east(Space* space, Id id) {
 }
 
 Id space_get_east(Space* space) {
+  
+  /* Error control */
   if (!space) {
     return NO_ID;
   }
@@ -135,6 +155,8 @@ Id space_get_east(Space* space) {
 }
 
 Status space_set_west(Space* space, Id id) {
+  
+  /* Error control */
   if (!space || id == NO_ID) {
     return ERROR;
   }
@@ -143,6 +165,8 @@ Status space_set_west(Space* space, Id id) {
 }
 
 Id space_get_west(Space* space) {
+  
+  /* Error control */
   if (!space) {
     return NO_ID;
   }
@@ -150,6 +174,8 @@ Id space_get_west(Space* space) {
 }
 
 Status space_set_object(Space* space, Bool value) {
+  
+  /* Error control */
   if (!space) {
     return ERROR;
   }
@@ -158,6 +184,8 @@ Status space_set_object(Space* space, Bool value) {
 }
 
 Bool space_get_object(Space* space) {
+  
+  /* Error control */
   if (!space) {
     return FALSE;
   }
