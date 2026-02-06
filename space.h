@@ -13,6 +13,9 @@
 
 #include "types.h"
 
+/**
+ * @brief Space data estrcuture
+ */
 typedef struct _Space Space;
 
 /**

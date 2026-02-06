@@ -1,12 +1,27 @@
+/**
+ * @brief It implements the object module
+ *
+ * @file object.c
+ * @author Profesores PPROG
+ * @version 0
+ * @date 27-01-2025
+ * @copyright GNU Public License
+ */
+
+#include "object.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-#include "object.h"
-
+/**
+ * @brief Object
+ *
+ * This struct stores all the information of an object
+ */
 struct _Object {
-  Id id;
-  char name[WORD_SIZE + 1];
+  Id id;                    /*!< Identifier of the object */
+  char name[WORD_SIZE + 1]; /*!< Name of the object */
 };
 
 Object* object_create(Id id) {
@@ -16,11 +31,13 @@ Object* object_create(Id id) {
   if (id == NO_ID) return NULL;
 
   newObject = (Object*)calloc(1, sizeof(Object));
+  
+  /* Error control */
   if (newObject == NULL) {
     return NULL;
   }
 
-  /* Initialization of an empty object*/
+  /* Initialization of an empty object */
   newObject->id = id;
   newObject->name[0] = '\0';
 
@@ -28,15 +45,20 @@ Object* object_create(Id id) {
 }
 
 Status object_destroy(Object* object) {
+  
+  /* Error control */
   if (!object) {
     return ERROR;
   }
 
   free(object);
+  object = NULL;
   return OK;
 }
 
 Id object_get_id(Object* object) {
+  
+  /* Error control */
   if (!object) {
     return NO_ID;
   }
@@ -44,6 +66,8 @@ Id object_get_id(Object* object) {
 }
 
 Status object_set_name(Object* object, char* name) {
+  
+  /* Error control */
   if (!object || !name) {
     return ERROR;
   }
@@ -55,6 +79,8 @@ Status object_set_name(Object* object, char* name) {
 }
 
 const char* object_get_name(Object* object) {
+  
+  /* Error control */
   if (!object) {
     return NULL;
   }
@@ -62,7 +88,8 @@ const char* object_get_name(Object* object) {
 }
 
 Status object_print(Object* object) {
-  /* Error Control */
+  
+  /* Error control */
   if (!object) {
     return ERROR;
   }

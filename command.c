@@ -10,14 +10,16 @@
 
 #include "command.h"
 
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <strings.h>
 
-#define CMD_LENGHT 30
+#define CMD_LENGTH 30 /*!< The length of the command */
 
-char *cmd_to_str[N_CMD][N_CMDT] = {{"", "No command"}, {"", "Unknown"}, {"e", "Exit"}, {"n", "Next"}, {"b", "Back"}};
+char *cmd_to_str[N_CMD][N_CMDT] = {{"", "No command"}, {"", "Unknown"}, {"e", "Exit"}, {"n", "Next"}, {"b", "Back"}}; /*!< List of commands, short and long */
 
 /**
  * @brief Command
@@ -28,13 +30,15 @@ struct _Command {
   CommandCode code; /*!< Name of the command */
 };
 
-/** space_create allocates memory for a new space
+/** command_create allocates memory for a new space
  *  and initializes its members
  */
 Command* command_create() {
   Command* newCommand = NULL;
 
   newCommand = (Command*)calloc(1,sizeof(Command));
+  
+  /* Error control */
   if (newCommand == NULL) {
     return NULL;
   }
@@ -46,6 +50,8 @@ Command* command_create() {
 }
 
 Status command_destroy(Command* command) {
+  
+  /* Error control */
   if (!command) {
     return ERROR;
   }
@@ -56,6 +62,8 @@ Status command_destroy(Command* command) {
 }
 
 Status command_set_code(Command* command, CommandCode code) {
+  
+  /* Error control */
   if (!command) {
     return ERROR;
   }
@@ -66,6 +74,8 @@ Status command_set_code(Command* command, CommandCode code) {
 }
 
 CommandCode command_get_code(Command* command) {
+  
+  /* Error control */
   if (!command) {
     return NO_CMD;
   }
@@ -73,21 +83,28 @@ CommandCode command_get_code(Command* command) {
 }
 
 Status command_get_user_input(Command* command) {
-  char input[CMD_LENGHT] = "", *token = NULL;
-  int i = UNKNOWN - NO_CMD + 1;
+  
+  /* Initialization of variables*/
+  char input[CMD_LENGTH] = "", *token = NULL;
+  int i = EXIT - NO_CMD;
   CommandCode cmd;
 
+  /* Error control */
   if (!command) {
     return ERROR;
   }
 
-  if (fgets(input, CMD_LENGHT, stdin)) {
+  /* It reads the command and put it in another variable without spaces and new lines */
+  if (fgets(input, CMD_LENGTH, stdin)) {
     token = strtok(input, " \n");
+    /* Error control */
     if (!token) {
       return command_set_code(command, UNKNOWN);
     }
-
+    
+    /* Initialization of a variable */
     cmd = UNKNOWN;
+    /* It creates a loop to see the commands and change its apointed number so they match, it does not matter if they are capital letter or not, or if they are short or long commands*/
     while (cmd == UNKNOWN && i < N_CMD) {
       if (!strcasecmp(token, cmd_to_str[i][CMDS]) || !strcasecmp(token, cmd_to_str[i][CMDL])) {
         cmd = i + NO_CMD;
